@@ -93,10 +93,4 @@ author_profile: true
     </ul>
   </div>
 </div>
-
-<div style="text-align: center; margin-top: 2rem;">
-  <a href="https://clustrmaps.com/site/1c3h2" title="Visit tracker">
-    <img src="https://clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=3fzStEwZikHkPYfOiN-DYAYIjjubNusYaXK6bqtbWsw&co=2d78ad&ct=ffffff" width="200" height="180" alt="Visitor Map" />
-  </a>
-</div>
 </span>

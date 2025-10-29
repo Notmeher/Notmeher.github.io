@@ -63,7 +63,7 @@ author_profile: true
 </div>
 
 <div class="news-card" style="border-left-color: #16a34a;">
-  <div class="news-date" style="background: #dcfce7; color: #15803d;">May 2025</div>
+  <div class="news-date" style="background: #dcfce7; color: #15803d;">October 2025</div>
   <div style="color: #2d3748;">
      Successfully deployed <strong>SFAGent</strong>, an AI-powered Salesforce compliance system with natural language processing capabilities. The system integrates Azure AI Foundry with Salesforce Apex classes for seamless automation.
     <br><a href="https://salesforcebotbm.azurewebsites.net/" class="news-link" target="_blank">View Live Application</a>
@@ -71,7 +71,7 @@ author_profile: true
 </div>
 
 <div class="news-card" style="border-left-color: #dc2626;">
-  <div class="news-date" style="background: #fee2e2; color: #991b1b;">March 2025</div>
+  <div class="news-date" style="background: #fee2e2; color: #991b1b;">July 2025</div>
   <div style="color: #2d3748;">
      Completed development of <strong>AI-Powered Automated Check Fraud Detection System</strong> using Azure Document Intelligence and Siamese Neural Networks for signature matching.
     <br><a href="https://nfcu-safeguard.azurewebsites.net/login" class="news-link" target="_blank">View Application</a> | <a href="https://bytemethodai.navattic.com/4n1302c9?g=cmev4cpgq000004ld64as0s91&s=0" class="news-link" target="_blank">Interactive Demo</a>
@@ -79,7 +79,7 @@ author_profile: true
 </div>
 
 <div class="news-card" style="border-left-color: #16a34a;">
-  <div class="news-date" style="background: #dcfce7; color: #15803d;">February 2025</div>
+  <div class="news-date" style="background: #dcfce7; color: #15803d;">May 2025</div>
   <div style="color: #2d3748;">
      Launched <strong>GeoViz</strong>, a modern flight-based compliance system for geographic data visualization and coordinate analysis built with Next.js and React.
     <br><a href="https://geoviz-test.azurewebsites.net/" class="news-link" target="_blank">Explore GeoViz</a>
@@ -104,7 +104,7 @@ author_profile: true
 </div>
 
 <div class="news-card" style="border-left-color: #9333ea;">
-  <div class="news-date" style="background: #f3e8ff; color: #7e22ce;">November 2024</div>
+  <div class="news-date" style="background: #f3e8ff; color: #7e22ce;">January 2025</div>
   <div style="color: #2d3748;">
      Created <strong>Company Competitor Service Analysis and SWOT AI Agent</strong> for comprehensive business intelligence and competitive analysis.
     <br><a href="https://app.readytensor.ai/publications/ai-powered-company-competitor-swot-analysis-saas-agent-UJf5ZsgXYWwp" class="news-link" target="_blank">View SWOT Agent</a>
@@ -112,7 +112,7 @@ author_profile: true
 </div>
 
 <div class="news-card" style="border-left-color: #f59e0b;">
-  <div class="news-date" style="background: #fef3c7; color: #d97706;">October 2024</div>
+  <div class="news-date" style="background: #fef3c7; color: #d97706;">March 2024</div>
   <div style="color: #2d3748;">
      Launched <strong>LLM Powered Legal Contract Generator</strong> with OCR capabilities and AI-driven contract analysis using Groq's API and LLaMA Vision.
     <br><a href="http://proposign.com/" class="news-link" target="_blank">Try PropoSign</a>

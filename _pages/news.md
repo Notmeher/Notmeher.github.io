@@ -58,7 +58,7 @@ author_profile: true
 <div class="news-card" style="border-left-color: #4f46e5;">
   <div class="news-date" style="background: #e0e7ff; color: #3730a3;">May 2025</div>
   <div style="color: #2d3748;">
-     Started my new role as <strong>Application Developer</strong> at <a href="https://www.linkedin.com/company/dexiansolutions/" class="news-link" target="_blank">DEXIAN (Bangladesh) Limited</a>, focusing on AI-powered applications and Salesforce integration projects.
+     Started my new role as <strong>Application Developer</strong> at <a href="https://www.linkedin.com/company/dexiansolutions/" class="news-link" target="_blank">DEXIAN (Bangladesh) Limited</a>, focusing on Building AI-powered applications.
   </div>
 </div>
 

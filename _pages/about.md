@@ -9,6 +9,8 @@ redirect_from:
   - /about.html
 ---
 
+<span style="font-family: 'Segoe UI', sans-serif; color: black;">
+
 
 <style>
   .news-wrapper {
@@ -258,3 +260,5 @@ redirect_from:
     <img src="https://clustrmaps.com/map_v2.png?cl=ffffff&w=a&t=tt&d=3fzStEwZikHkPYfOiN-DYAYIjjubNusYaXK6bqtbWsw&co=2d78ad&ct=ffffff" width="200" height="180" alt="Visitor Map" />
   </a>
 </div>
+
+</span>

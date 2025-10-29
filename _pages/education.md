@@ -62,29 +62,32 @@ author_profile: true
 
   <div style="background-color: white; border-left: 5px solid #9333ea; border-radius: 10px; padding: 25px; flex: 1 1 100%; max-width: 100%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
     <div style="background-color: #f3e8ff; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-      <span style="color: #7e22ce; font-size: 1em; font-weight: bold;">Professional Development</span>
+      <span style="color: #7e22ce; font-size: 1.2em; font-weight: bold;">Birshreshtha Noor Mohammad Public College</span>
     </div>
-    <div style="margin-top: 15px;">
-      <h4 style="color: #9333ea; margin: 0 0 15px 0;">Continuous Learning Journey:</h4>
-      <ul style="font-family: 'Segoe UI', sans-serif; color: black; margin-top: 15px;">
-        <li style="margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px;">
-          <span style="position: absolute; left: 0; color: #9333ea; font-size: 0.9em;">■</span>
-          <b>Industry Certifications:</b> Pursuing cloud computing and AI certifications
-        </li>
-        <li style="margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px;">
-          <span style="position: absolute; left: 0; color: #9333ea; font-size: 0.9em;">■</span>
-          <b>Online Courses:</b> Advanced machine learning, cloud architecture, and modern web development
-        </li>
-        <li style="margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px;">
-          <span style="position: absolute; left: 0; color: #9333ea; font-size: 0.9em;">■</span>
-          <b>Practical Projects:</b> Hands-on experience through personal and professional projects
-        </li>
-        <li style="margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px;">
-          <span style="position: absolute; left: 0; color: #9333ea; font-size: 0.9em;">■</span>
-          <b>Research Activities:</b> Active participation in AI and healthcare research initiatives
-        </li>
-      </ul>
+    <ul style="font-family: 'Segoe UI', sans-serif; color: black; margin-top: 15px;">
+      <li style="margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px;">
+        <span style="position: absolute; left: 0; color: #9333ea; font-size: 0.9em;">■</span>
+        <b>Higher School Certificate (HSC)</b><br/>
+        <b>Duration:</b> June 2016 – July 2019<br/>
+        <b>Location:</b> Dhaka, Bangladesh<br/>
+        <b>Focus Areas:</b> Science Group, Mathematics, Physics, Chemistry, Biology
+      </li>
+    </ul>
+  </div>
+
+  <div style="background-color: white; border-left: 5px solid #dc2626; border-radius: 10px; padding: 25px; flex: 1 1 100%; max-width: 100%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <div style="background-color: #fee2e2; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+      <span style="color: #dc2626; font-size: 1.2em; font-weight: bold;">I.E.T Govt High School</span>
     </div>
+    <ul style="font-family: 'Segoe UI', sans-serif; color: black; margin-top: 15px;">
+      <li style="margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px;">
+        <span style="position: absolute; left: 0; color: #dc2626; font-size: 0.9em;">■</span>
+        <b>Secondary School Certificate (SSC)</b><br/>
+        <b>Duration:</b> 2011 – 2016<br/>
+        <b>Location:</b> Dhaka, Bangladesh<br/>
+        <b>Foundation:</b> Science Group, Core subjects in Mathematics and Sciences
+      </li>
+    </ul>
   </div>
 
   <div style="background-color: white; border-left: 5px solid #f59e0b; border-radius: 10px; padding: 25px; flex: 1 1 100%; max-width: 100%; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">

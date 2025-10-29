@@ -6,9 +6,6 @@ main:
   - title: "News"
     url: /news/
     
-  - title: "Research"
-    url: /research/
-    
   - title: "Publications"
     url: /publications/  
 
@@ -17,9 +14,6 @@ main:
 
   - title: "Services"
     url: /services/     
-
-  - title: "Datasets"
-    url: /datasets/    
     
   - title: "Education"
     url: /education/

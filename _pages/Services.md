@@ -143,10 +143,9 @@ title: "Services"
     I'm available for freelance projects, consulting work, and collaborative research opportunities. Whether you need assistance with AI implementation, web application development, or technical consultation, I'm committed to delivering high-quality solutions tailored to your specific needs.
   </p>
   <div style="margin-top: 15px;">
-    <p><strong>📧 Email:</strong> <a href="mailto:muhedinipunsu@gmail.com" style="color: #06b6d4;">muhedinipunsu@gmail.com</a></p>
+    <p><strong>📧 Personal Email:</strong> <a href="mailto:lifeasmeher@gmail.com" style="color: #06b6d4;">lifeasmeher@gmail.com</a></p>
+    <p><strong>📧 Work Email:</strong> <a href="mailto:mehedi.nipu@dexian.com" style="color: #06b6d4;">mehedi.nipu@dexian.com</a></p>
     <p><strong>💼 LinkedIn:</strong> <a href="https://www.linkedin.com/in/notmeher4459/" style="color: #06b6d4;" target="_blank">Connect with me</a></p>
     <p><strong>🐙 GitHub:</strong> <a href="https://github.com/Notmeher" style="color: #06b6d4;" target="_blank">View my projects</a></p>
   </div>
 </div>
-
-</span>

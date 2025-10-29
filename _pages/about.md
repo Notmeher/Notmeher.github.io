@@ -255,5 +255,3 @@ redirect_from:
 </div>
 
 </div>
-
-</span>

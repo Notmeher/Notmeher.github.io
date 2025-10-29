@@ -121,4 +121,3 @@ author_profile: true
     Education is a lifelong journey, and I am committed to continuous learning and professional development. My future educational goals include pursuing advanced degrees in artificial intelligence or related fields, obtaining industry certifications in cloud computing and AI technologies, and staying updated with the latest developments in machine learning and healthcare informatics. I believe in the importance of both formal education and self-directed learning to stay at the forefront of technological advancement.
   </p>
 </div>
-</span>

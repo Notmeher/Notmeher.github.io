@@ -9,10 +9,12 @@ redirect_from:
   - /about.html
 ---
 
-<span style="font-family: 'Segoe UI', sans-serif; color: black;">
-
-
 <style>
+  body, .archive {
+    font-family: 'Segoe UI', sans-serif;
+    color: black;
+  }
+  
   .news-wrapper {
     font-family: 'Segoe UI', sans-serif;
   }
@@ -255,4 +257,3 @@ redirect_from:
 </div>
 
 </div>
-</span>

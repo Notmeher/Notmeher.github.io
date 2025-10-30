@@ -62,7 +62,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : profile1.jpg # Open Graph/Twitter default site image
+og_image                 : profile1.png # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Mehedi Hasan Nipu"
-  avatar           : "profile1.jpg"
+  avatar           : "profile1.png"
   bio              : "Application Developer @ DEXIAN | Passionate about AI-powered applications, LLMs, and deep learning"
   location         : "Dhaka, Bangladesh"
   employer         :

@@ -22,7 +22,6 @@ import { SiGooglescholar, SiOrcid, SiResearchgate } from "react-icons/si";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   activities,
-  awardsAndCertifications,
   capabilities,
   experience,
   publications,
@@ -31,6 +30,7 @@ import {
   type PublicationFilter,
 } from "@/data/portfolio";
 import { SignalField } from "./signal-field";
+import { AwardsCarousel } from "./awards-carousel";
 import styles from "./portfolio.module.css";
 
 const navItems = [
@@ -163,43 +163,78 @@ function Reveal({
 
 function Loader() {
   const shouldReduceMotion = useReducedMotion();
+  const nameWords = [
+    { word: "MEHEDI", offset: 0 },
+    { word: "HASAN", offset: 6 },
+    { word: "NIPU", offset: 11 },
+  ];
 
   return (
     <motion.div
       className={styles.loader}
-      initial={{ opacity: 1 }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: shouldReduceMotion ? 0.01 : 0.45,
-          ease: "easeInOut",
-        },
-      }}
+      initial={{ opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }}
+      exit={
+        shouldReduceMotion
+          ? { opacity: 0, transition: { duration: 0.01 } }
+          : {
+              clipPath: "inset(0% 0% 100% 0%)",
+              transition: { duration: 0.58, ease: [0.76, 0, 0.24, 1] },
+            }
+      }
       aria-label="Loading portfolio"
     >
       <motion.span
         className={styles.loaderSweep}
         initial={{ x: "-120%" }}
-        animate={{ x: "120%" }}
+        animate={{ x: "340%" }}
         transition={{
-          duration: shouldReduceMotion ? 0.01 : 1.05,
+          duration: shouldReduceMotion ? 0.01 : 1.38,
           ease: [0.65, 0, 0.35, 1],
         }}
         aria-hidden="true"
       />
       <div className={styles.loaderInner}>
         <motion.div
-          className={styles.loaderMark}
-          initial={
-            shouldReduceMotion
-              ? false
-              : { opacity: 0, y: 16, scale: 0.94, filter: "blur(8px)" }
-          }
-          animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: shouldReduceMotion ? 0.01 : 0.58 }}
-          aria-hidden="true"
+          className={styles.loaderName}
+          aria-label="MEHEDI HASAN NIPU"
         >
-          MN<span>/26</span>
+          {nameWords.map(({ word, offset }) => (
+            <span className={styles.loaderWord} key={word} aria-hidden="true">
+              {Array.from(word).map((letter, letterIndex) => (
+                <motion.span
+                  className={styles.loaderLetter}
+                  key={`${word}-${letterIndex}`}
+                  initial={
+                    shouldReduceMotion
+                      ? false
+                      : {
+                          opacity: 0,
+                          y: "0.72em",
+                          filter: "blur(7px)",
+                        }
+                  }
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0.01 : 0.42,
+                    delay: shouldReduceMotion
+                      ? 0
+                      : 0.08 + (offset + letterIndex) * 0.048,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
+          ))}
+          <motion.i
+            className={styles.loaderCaret}
+            animate={
+              shouldReduceMotion ? undefined : { opacity: [0.2, 1, 0.2] }
+            }
+            transition={{ duration: 0.8, repeat: Infinity }}
+            aria-hidden="true"
+          />
         </motion.div>
         <motion.div
           className={styles.loaderReadout}
@@ -209,27 +244,9 @@ function Loader() {
         >
           <span>
             <i className={styles.loaderSignal} aria-hidden="true" />
-            INITIALIZING PORTFOLIO SYSTEM
+            LOADING
           </span>
-          <motion.span
-            animate={
-              shouldReduceMotion ? undefined : { opacity: [0.32, 1, 0.32] }
-            }
-            transition={{ duration: 0.9, repeat: Infinity }}
-          >
-            READY
-          </motion.span>
         </motion.div>
-        <div className={styles.loaderTrack}>
-          <motion.span
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{
-              duration: shouldReduceMotion ? 0.01 : 0.95,
-              ease: [0.65, 0, 0.35, 1],
-            }}
-          />
-        </div>
       </div>
     </motion.div>
   );
@@ -261,7 +278,7 @@ export function Portfolio() {
   useEffect(() => {
     const timeout = window.setTimeout(
       () => setIsLoading(false),
-      shouldReduceMotion ? 120 : 1150,
+      shouldReduceMotion ? 100 : 1700,
     );
     return () => window.clearTimeout(timeout);
   }, [shouldReduceMotion]);
@@ -841,57 +858,9 @@ export function Portfolio() {
               </p>
             </Reveal>
 
-            <div className={styles.awardsList}>
-              {awardsAndCertifications.map((item, index) => (
-                <Reveal
-                  className={styles.awardRow}
-                  delay={Math.min(index * 0.05, 0.16)}
-                  key={item.title}
-                >
-                  <div className={styles.awardIndex}>
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <span>{item.type}</span>
-                  </div>
-
-                  <div className={styles.awardMain}>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-
-                  <dl className={styles.awardMeta}>
-                    <div>
-                      <dt>Issuer</dt>
-                      <dd>{item.issuer}</dd>
-                    </div>
-                    <div>
-                      <dt>Issued</dt>
-                      <dd>{item.issued}</dd>
-                    </div>
-                    {item.credentialId ? (
-                      <div>
-                        <dt>Credential ID</dt>
-                        <dd>{item.credentialId}</dd>
-                      </div>
-                    ) : null}
-                    {item.associatedWith ? (
-                      <div>
-                        <dt>Associated with</dt>
-                        <dd>{item.associatedWith}</dd>
-                      </div>
-                    ) : null}
-                  </dl>
-
-                  <a
-                    className={styles.awardLink}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {item.linkLabel} <ArrowUpRight size={15} />
-                  </a>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal>
+              <AwardsCarousel />
+            </Reveal>
           </div>
         </section>
 

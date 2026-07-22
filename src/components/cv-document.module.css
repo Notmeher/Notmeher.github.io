@@ -1,0 +1,57 @@
+.stage {
+  width: 100%;
+  min-height: 760px;
+  padding: 32px 16px 48px;
+  overflow: hidden;
+  background: #343331;
+}
+
+.pages {
+  display: grid;
+  justify-items: center;
+  gap: 32px;
+}
+
+.page {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.pageLabel {
+  margin-bottom: 8px;
+  color: #b8b4ad;
+  font-family: var(--font-mono);
+  font-size: 8px;
+}
+
+.page :global(.react-pdf__Page) {
+  max-width: 100%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.page :global(canvas) {
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+}
+
+.message {
+  display: grid;
+  min-height: 220px;
+  place-items: center;
+  color: var(--on-dark-muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .stage {
+    min-height: 620px;
+    padding: 20px 8px 32px;
+  }
+
+  .pages {
+    gap: 24px;
+  }
+}

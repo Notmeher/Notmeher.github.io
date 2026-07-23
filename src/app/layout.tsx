@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "@fontsource/cormorant-garamond/500.css";
 import "@fontsource/cormorant-garamond/600.css";
+import "@fontsource/cormorant-garamond/700.css";
 import "@fontsource/dm-sans/400.css";
 import "@fontsource/dm-sans/500.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
+import { PointerTrail } from "@/components/pointer-trail";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,7 +41,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <PointerTrail />
+        {children}
+      </body>
     </html>
   );
 }

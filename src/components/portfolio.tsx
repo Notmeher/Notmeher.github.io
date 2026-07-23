@@ -74,6 +74,32 @@ const navbarLinks = [
   },
 ];
 
+const loaderNameWords = [
+  { word: "MEHEDI", offset: 0 },
+  { word: "HASAN", offset: 6 },
+  { word: "NIPU", offset: 11 },
+] as const;
+
+const loaderLetterCount = loaderNameWords.reduce(
+  (total, item) => total + item.word.length,
+  0,
+);
+
+const loaderGlyphFragments = [
+  { value: "M", code: "01", left: "5%", top: "14%", x: -90, y: -42, z: -180, rx: 58, ry: -34, rz: -14 },
+  { value: "{ }", code: "02", left: "22%", top: "8%", x: 38, y: -72, z: 120, rx: -42, ry: 48, rz: 9 },
+  { value: "01", code: "03", left: "47%", top: "11%", x: -26, y: -86, z: -240, rx: 66, ry: 18, rz: -8 },
+  { value: "H", code: "04", left: "75%", top: "9%", x: 72, y: -58, z: 170, rx: -54, ry: -38, rz: 14 },
+  { value: "</>", code: "05", left: "90%", top: "22%", x: 110, y: -20, z: -120, rx: 32, ry: 62, rz: -11 },
+  { value: "N", code: "06", left: "5%", top: "68%", x: -104, y: 44, z: 150, rx: -68, ry: 28, rz: 12 },
+  { value: "[ ]", code: "07", left: "18%", top: "84%", x: -54, y: 86, z: -210, rx: 44, ry: -56, rz: -16 },
+  { value: "AI", code: "08", left: "47%", top: "82%", x: 22, y: 94, z: 190, rx: -36, ry: 32, rz: 7 },
+  { value: "//", code: "09", left: "75%", top: "85%", x: 62, y: 78, z: -160, rx: 62, ry: 46, rz: 15 },
+  { value: "*", code: "10", left: "91%", top: "69%", x: 116, y: 48, z: 130, rx: -48, ry: -64, rz: -10 },
+  { value: "R3", code: "11", left: "9%", top: "43%", x: -126, y: 4, z: -280, rx: 28, ry: 72, rz: 18 },
+  { value: "XYZ", code: "12", left: "86%", top: "45%", x: 132, y: -8, z: 230, rx: -30, ry: -70, rz: -18 },
+] as const;
+
 const featuredPublications = publications.slice(0, 3);
 
 const heroContentVariants = {
@@ -128,11 +154,21 @@ function Reveal({
 
 function Loader() {
   const shouldReduceMotion = useReducedMotion();
-  const nameWords = [
-    { word: "MEHEDI", offset: 0 },
-    { word: "HASAN", offset: 6 },
-    { word: "NIPU", offset: 11 },
-  ];
+  const [isSettled, setIsSettled] = useState(false);
+
+  useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
+    const settleTimer = window.setTimeout(() => setIsSettled(true), 1380);
+    return () => window.clearTimeout(settleTimer);
+  }, [shouldReduceMotion]);
+
+  const loaderReady = shouldReduceMotion || isSettled;
+  const loaderStatus = loaderReady
+    ? "IDENTITY LOCKED"
+    : "CALIBRATING GLYPH FIELD";
 
   return (
     <motion.div
@@ -158,48 +194,166 @@ function Loader() {
         }}
         aria-hidden="true"
       />
+      <div className={styles.loaderScene} aria-hidden="true">
+        <motion.div
+          className={styles.loaderGridPlane}
+          initial={
+            shouldReduceMotion
+              ? false
+              : { opacity: 0, y: "18%", rotateX: 64 }
+          }
+          animate={
+            shouldReduceMotion
+              ? { opacity: 0.18, y: 0, rotateX: 60 }
+              : {
+                  opacity: [0, 0.56, 0.24],
+                  y: ["18%", "0%", "-8%"],
+                  rotateX: [64, 60, 56],
+                }
+          }
+          transition={{
+            duration: shouldReduceMotion ? 0.01 : 1.65,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+        />
+
+        <div className={styles.loaderCorePosition}>
+          <motion.div
+            className={styles.loaderCore}
+            initial={
+              shouldReduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    scale: 0.52,
+                    rotateX: 62,
+                    rotateY: -54,
+                    rotateZ: 18,
+                    z: -260,
+                  }
+            }
+            animate={
+              shouldReduceMotion
+                ? { opacity: 0.14 }
+                : {
+                    opacity: [0, 0.44, 0.16],
+                    scale: [0.52, 1.04, 0.9],
+                    rotateX: [62, 38, 26],
+                    rotateY: [-54, 18, 38],
+                    rotateZ: [18, -7, -13],
+                    z: [-260, 40, -30],
+                  }
+            }
+            transition={{
+              duration: shouldReduceMotion ? 0.01 : 1.62,
+              times: [0, 0.58, 1],
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <span className={styles.loaderCoreFrame} />
+            <span className={styles.loaderCoreFrame} />
+            <span className={styles.loaderCoreFrame} />
+            <span className={styles.loaderCoreMark}>MHN</span>
+          </motion.div>
+        </div>
+
+        <div className={styles.loaderGlyphField}>
+          {loaderGlyphFragments.map((glyph, index) => (
+            <motion.span
+              className={styles.loaderGlyph}
+              style={{ left: glyph.left, top: glyph.top }}
+              key={glyph.code}
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : {
+                      opacity: 0,
+                      x: glyph.x,
+                      y: glyph.y,
+                      z: glyph.z,
+                      rotateX: glyph.rx,
+                      rotateY: glyph.ry,
+                      rotateZ: glyph.rz,
+                      scale: 0.54,
+                    }
+              }
+              animate={
+                shouldReduceMotion
+                  ? { opacity: 0.14 }
+                  : {
+                      opacity: [0, 0.78, 0.5, 0.12],
+                      x: [glyph.x, 0, 0, glyph.x * -0.12],
+                      y: [glyph.y, 0, 0, glyph.y * -0.08],
+                      z: [glyph.z, glyph.z * -0.14, 24, glyph.z * 0.22],
+                      rotateX: [glyph.rx, glyph.rx * -0.12, 0, 0],
+                      rotateY: [glyph.ry, glyph.ry * -0.14, 0, glyph.ry * -0.24],
+                      rotateZ: [glyph.rz, 0, 0, glyph.rz * -0.22],
+                      scale: [0.54, 1.04, 1, 0.84],
+                    }
+              }
+              transition={{
+                duration: shouldReduceMotion ? 0.01 : 1.58,
+                delay: shouldReduceMotion ? 0 : index * 0.018,
+                times: [0, 0.34, 0.72, 1],
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <small>{glyph.code}</small>
+              <b>{glyph.value}</b>
+            </motion.span>
+          ))}
+        </div>
+      </div>
       <div className={styles.loaderInner}>
         <motion.div
           className={styles.loaderName}
           aria-label="MEHEDI HASAN NIPU"
         >
-          {nameWords.map(({ word, offset }) => (
+          {loaderNameWords.map(({ word, offset }) => (
             <span className={styles.loaderWord} key={word} aria-hidden="true">
-              {Array.from(word).map((letter, letterIndex) => (
-                <motion.span
-                  className={styles.loaderLetter}
-                  key={`${word}-${letterIndex}`}
-                  initial={
-                    shouldReduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          y: "0.72em",
-                          filter: "blur(7px)",
-                        }
-                  }
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{
-                    duration: shouldReduceMotion ? 0.01 : 0.42,
-                    delay: shouldReduceMotion
-                      ? 0
-                      : 0.08 + (offset + letterIndex) * 0.048,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
+              {Array.from(word).map((letter, letterIndex) => {
+                const globalIndex = offset + letterIndex;
+                const direction = globalIndex % 2 === 0 ? 1 : -1;
+                const lateralDirection = (globalIndex % 3) - 1;
+
+                return (
+                  <motion.span
+                    className={styles.loaderLetter}
+                    key={`${word}-${letterIndex}`}
+                    initial={
+                      shouldReduceMotion
+                        ? false
+                        : {
+                            opacity: 0,
+                            y: `${direction * 0.78}em`,
+                            rotateX: direction * 78,
+                            rotateY: lateralDirection * 28,
+                            rotateZ: direction * (3 + (globalIndex % 3) * 2),
+                            scale: 0.68,
+                            filter: "blur(12px)",
+                          }
+                    }
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      rotateX: 0,
+                      rotateY: 0,
+                      rotateZ: 0,
+                      scale: 1,
+                      filter: "blur(0px)",
+                    }}
+                    transition={{
+                      duration: shouldReduceMotion ? 0.01 : 0.7,
+                      delay: shouldReduceMotion ? 0 : 0.08 + globalIndex * 0.042,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    {letter}
+                  </motion.span>
+                );
+              })}
             </span>
           ))}
-          <motion.i
-            className={styles.loaderCaret}
-            animate={
-              shouldReduceMotion ? undefined : { opacity: [0.2, 1, 0.2] }
-            }
-            transition={{ duration: 0.8, repeat: Infinity }}
-            aria-hidden="true"
-          />
         </motion.div>
         <motion.div
           className={styles.loaderReadout}
@@ -208,8 +362,23 @@ function Loader() {
           transition={{ duration: 0.3, delay: shouldReduceMotion ? 0 : 0.32 }}
         >
           <span>
-            <i className={styles.loaderSignal} aria-hidden="true" />
-            LOADING
+            <i
+              className={`${styles.loaderSignal} ${
+                loaderReady ? styles.loaderSignalReady : ""
+              }`}
+              aria-hidden="true"
+            />
+            <motion.b
+              key={loaderStatus}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: shouldReduceMotion ? 0.01 : 0.16 }}
+            >
+              {loaderStatus}
+            </motion.b>
+          </span>
+          <span className={styles.loaderCount}>
+            {loaderLetterCount} GLYPHS / XYZ
           </span>
         </motion.div>
       </div>
@@ -239,12 +408,15 @@ export function Portfolio() {
   });
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
     const timeout = window.setTimeout(
       () => setIsLoading(false),
-      shouldReduceMotion ? 100 : 1700,
+      prefersReducedMotion ? 100 : 1700,
     );
     return () => window.clearTimeout(timeout);
-  }, [shouldReduceMotion]);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -402,7 +574,6 @@ export function Portfolio() {
               </div>
               <figcaption>
                 <span>MEHEDI HASAN NIPU</span>
-                <span>PORTFOLIO / 2026</span>
               </figcaption>
             </motion.figure>
           </div>

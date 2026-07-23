@@ -11,19 +11,19 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://notmeher.github.io"),
-  title: "Mehedi Hasan Nipu | AI Application Developer",
+  title: "Mehedi Hasan Nipu | AI Engineer",
   description:
-    "Portfolio of Mehedi Hasan Nipu, an application developer and AI researcher building production-grade agentic systems, LLM applications, and trustworthy machine learning tools.",
+    "Portfolio of Mehedi Hasan Nipu, an AI engineer and researcher building production-grade agentic systems, LLM applications, and trustworthy machine learning tools.",
   keywords: [
     "Mehedi Hasan Nipu",
-    "AI application developer",
+    "AI engineer",
     "LLM agents",
     "multi-agent systems",
     "machine learning researcher",
   ],
   authors: [{ name: "Mehedi Hasan Nipu" }],
   openGraph: {
-    title: "Mehedi Hasan Nipu | AI Application Developer",
+    title: "Mehedi Hasan Nipu | AI Engineer",
     description:
       "Production AI systems, multi-agent workflows, and applied machine learning research.",
     type: "website",

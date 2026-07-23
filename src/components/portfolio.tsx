@@ -517,7 +517,7 @@ export function Portfolio() {
                 className={styles.heroRole}
                 variants={heroItemVariants}
               >
-                AI application developer &amp; researcher
+                AI engineer &amp; researcher
               </motion.p>
 
               <motion.p
@@ -602,7 +602,7 @@ export function Portfolio() {
             <div className={styles.profileGrid}>
               <Reveal className={styles.profileCopy}>
                 <p className={styles.leadStatement}>
-                  I am an application developer and AI researcher focused on
+                  I am an AI engineer and researcher focused on
                   building useful, accountable systems around large language
                   models.
                 </p>

@@ -9,7 +9,7 @@ const cvPath = "/files/Mehedi-Hasan-Nipu-CV.pdf";
 export const metadata: Metadata = {
   title: "CV | Mehedi Hasan Nipu",
   description:
-    "Curriculum vitae of Mehedi Hasan Nipu, AI application developer and researcher.",
+    "Curriculum vitae of Mehedi Hasan Nipu, AI engineer and researcher.",
 };
 
 export default function CvPage() {

@@ -505,7 +505,7 @@ export function Portfolio() {
                 className={styles.heroEyebrow}
                 variants={heroItemVariants}
               >
-                <span>APPLICATION DEVELOPER</span>
+                <span>APPLICATION DEVELOPER(AI/ML)</span>
                 <span>DHAKA, BANGLADESH</span>
               </motion.div>
 

@@ -50,7 +50,7 @@ export type Publication = {
 export const experience: Experience[] = [
   {
     period: "Dec 2025 - Present",
-    role: "Application Developer",
+    role: "Application Developer (AI/ML)",
     company: "DEXIAN (Bangladesh) Limited",
     companyHref: "https://www.linkedin.com/company/dexiansolutions/",
     logo: "/images/dexian-logo.png",
@@ -147,7 +147,7 @@ export const experience: Experience[] = [
   },
   {
     period: "May 2025 - Nov 2025",
-    role: "Junior Application Developer",
+    role: "Junior Application Developer (AI/ML)",
     company: "DEXIAN (Bangladesh) Limited",
     companyHref: "https://www.linkedin.com/company/dexiansolutions/",
     logo: "/images/dexian-logo.png",
@@ -568,7 +568,7 @@ export const capabilities = [
 export const technicalSkills = [
   {
     category: "Programming Languages",
-    items: ["Python", "C"],
+    items: ["Python (NumPy, scikit-learn, Matplotlib, Pandas, Seaborn)"],
   },
   {
     category: "Web Development",
@@ -615,7 +615,7 @@ export const technicalSkills = [
     ],
   },
   {
-    category: "Tools & Practices",
+    category: "Others",
     items: [
       "Vector Database",
       "OpenCV",

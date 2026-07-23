@@ -476,7 +476,7 @@ export const publications: Publication[] = [
     href: "https://publications.eai.eu/index.php/phat/article/view/5543",
   },
   {
-    category: "Journal",
+    category: "Preprint",
     year: "2025",
     title:
       "MedBayes-Lite: Bayesian Uncertainty Quantification for Safe Clinical Decision Support",

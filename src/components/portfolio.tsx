@@ -28,7 +28,6 @@ import {
   publications,
   technicalSkills,
 } from "@/data/portfolio";
-import { SignalField } from "./signal-field";
 import { AwardsCarousel } from "./awards-carousel";
 import styles from "./portfolio.module.css";
 
@@ -77,30 +76,20 @@ const navbarLinks = [
 
 const featuredPublications = publications.slice(0, 3);
 
-const heroMastheadVariants = {
+const heroContentVariants = {
   hidden: {},
   visible: {
-    transition: { delayChildren: 0.05, staggerChildren: 0.11 },
+    transition: { delayChildren: 0.08, staggerChildren: 0.1 },
   },
 };
 
-const heroWordVariants = {
-  hidden: { y: "108%", opacity: 0, rotate: 1.2 },
-  visible: {
-    opacity: 1,
-    y: "0%",
-    rotate: 0,
-    transition: { duration: 0.82, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
-
-const heroPanelVariants = {
-  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
+const heroItemVariants = {
+  hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.68, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -333,142 +322,100 @@ export function Portfolio() {
 
       <main>
         <section id="top" className={styles.hero}>
-          <SignalField />
           <div className={styles.heroShell}>
             <motion.div
-              className={styles.heroMeta}
-              initial={shouldReduceMotion ? false : { opacity: 0 }}
-              animate={isLoading ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: shouldReduceMotion ? 0.01 : 0.45 }}
-            >
-              <span>PORTFOLIO / 2026</span>
-              <span>AI APPLICATION DEVELOPER · RESEARCHER</span>
-              <span>DHAKA, BANGLADESH · 23.8103° N</span>
-            </motion.div>
-
-            <motion.h1
-              className={styles.heroMasthead}
-              variants={heroMastheadVariants}
+              className={styles.heroCopy}
+              variants={heroContentVariants}
               initial={shouldReduceMotion ? false : "hidden"}
               animate={isLoading ? "hidden" : "visible"}
-              aria-label="Mehedi Hasan Nipu"
             >
-              <span className={styles.heroMastheadLine} aria-hidden="true">
-                <motion.span variants={heroWordVariants}>MEHEDI</motion.span>
-              </span>
-              <span
-                className={`${styles.heroMastheadLine} ${styles.heroMastheadSecond}`}
-                aria-hidden="true"
-              >
-                <motion.span variants={heroWordVariants}>HASAN</motion.span>
-                <motion.em variants={heroWordVariants}>NIPU</motion.em>
-              </span>
-            </motion.h1>
-
-            <div className={styles.heroLower}>
-              <motion.figure
-                className={styles.heroIdentity}
-                initial={
-                  shouldReduceMotion
-                    ? false
-                    : { opacity: 0, clipPath: "inset(100% 0% 0% 0%)" }
-                }
-                animate={
-                  isLoading
-                    ? { opacity: 0 }
-                    : { opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }
-                }
-                transition={{
-                  duration: shouldReduceMotion ? 0.01 : 0.78,
-                  delay: shouldReduceMotion ? 0 : 0.34,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                whileHover={
-                  shouldReduceMotion ? undefined : { y: -4, rotate: -0.45 }
-                }
-              >
-                <div className={styles.heroIdentityImage}>
-                  <Image
-                    src="/images/avatar.png"
-                    alt="Portrait of Mehedi Hasan Nipu"
-                    fill
-                    sizes="(max-width: 560px) 76vw, 300px"
-                    priority
-                  />
-                  <span aria-hidden="true">ID / 01</span>
-                </div>
-                <figcaption>
-                  <span>MEHEDI HASAN NIPU</span>
-                  <span>Building from Dhaka · Working globally</span>
-                </figcaption>
-              </motion.figure>
-
               <motion.div
-                className={styles.heroStatement}
-                variants={heroPanelVariants}
-                initial={shouldReduceMotion ? false : "hidden"}
-                animate={isLoading ? "hidden" : "visible"}
+                className={styles.heroEyebrow}
+                variants={heroItemVariants}
               >
-                <p className={styles.heroStatementLabel}>WHAT I BUILD</p>
-                <h2>Reliable AI systems for work that matters.</h2>
-                <p>
-                  I turn agentic workflows, language models, and applied
-                  machine learning into clear products people can depend on.
-                </p>
-                <div className={styles.heroActions}>
-                  <a className={styles.primaryButton} href="#work">
-                    Selected work <ArrowDownRight size={17} />
-                  </a>
-                  <a className={styles.heroTextLink} href="/cv">
-                    Read my CV <ArrowRight size={15} />
-                  </a>
-                </div>
+                <span>APPLICATION DEVELOPER</span>
+                <span>DHAKA, BANGLADESH</span>
               </motion.div>
 
-              <motion.aside
-                className={styles.heroFocus}
-                variants={heroPanelVariants}
-                initial={shouldReduceMotion ? false : "hidden"}
-                animate={isLoading ? "hidden" : "visible"}
-                transition={{ delay: shouldReduceMotion ? 0 : 0.14 }}
-              >
-                <p>CURRENT SIGNAL</p>
-                <ol>
-                  <li>
-                    <span>01</span> Agentic AI
-                  </li>
-                  <li>
-                    <span>02</span> Multi-agent systems
-                  </li>
-                  <li>
-                    <span>03</span> Trustworthy ML
-                  </li>
-                </ol>
-              </motion.aside>
-            </div>
+              <motion.h1 variants={heroItemVariants}>
+                Mehedi Hasan <em>Nipu.</em>
+              </motion.h1>
 
-            <motion.div
-              className={styles.heroRail}
-              initial={shouldReduceMotion ? false : { opacity: 0, scaleX: 0 }}
+              <motion.p
+                className={styles.heroRole}
+                variants={heroItemVariants}
+              >
+                AI application developer &amp; researcher
+              </motion.p>
+
+              <motion.p
+                className={styles.heroIntro}
+                variants={heroItemVariants}
+              >
+                I build reliable agentic systems, language-model applications,
+                and applied machine-learning products for real operational
+                work.
+              </motion.p>
+
+              <motion.div
+                className={styles.heroActions}
+                variants={heroItemVariants}
+              >
+                <a className={styles.primaryButton} href="#work">
+                  Selected work <ArrowDownRight size={17} />
+                </a>
+                <Link className={styles.heroTextLink} href="/research">
+                  Research <ArrowRight size={15} />
+                </Link>
+                <Link className={styles.heroTextLink} href="/cv">
+                  CV <ArrowRight size={15} />
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            <motion.figure
+              className={styles.heroPortrait}
+              initial={
+                shouldReduceMotion
+                  ? false
+                  : { opacity: 0, scale: 0.96, x: 24 }
+              }
               animate={
                 isLoading
-                  ? { opacity: 0, scaleX: 0 }
-                  : { opacity: 1, scaleX: 1 }
+                  ? { opacity: 0 }
+                  : { opacity: 1, scale: 1, x: 0 }
               }
               transition={{
                 duration: shouldReduceMotion ? 0.01 : 0.72,
-                delay: shouldReduceMotion ? 0 : 0.52,
-                ease: [0.22, 1, 0.36, 1],
+                delay: shouldReduceMotion ? 0 : 0.2,
+                ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <span>APPLICATIONS</span>
-              <span>RESEARCH</span>
-              <span>AI SYSTEMS</span>
-              <a href="#profile">
-                SCROLL TO EXPLORE <ArrowDownRight size={14} />
-              </a>
-            </motion.div>
+              <div className={styles.heroPortraitImage}>
+                <Image
+                  src="/images/avatar.png"
+                  alt="Portrait of Mehedi Hasan Nipu"
+                  fill
+                  sizes="(max-width: 820px) 72vw, 400px"
+                  priority
+                />
+              </div>
+              <figcaption>
+                <span>MEHEDI HASAN NIPU</span>
+                <span>PORTFOLIO / 2026</span>
+              </figcaption>
+            </motion.figure>
           </div>
+
+          <motion.a
+            className={styles.heroScroll}
+            href="#profile"
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
+            animate={isLoading ? { opacity: 0 } : { opacity: 1 }}
+            transition={{ delay: shouldReduceMotion ? 0 : 0.55 }}
+          >
+            Scroll to profile <ArrowDownRight size={14} />
+          </motion.a>
         </section>
 
         <section id="profile" className={styles.profileSection}>

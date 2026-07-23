@@ -29,7 +29,11 @@ export type Experience = {
   projects: RoleProject[];
 };
 
-export type PublicationCategory = "Journal" | "Conference" | "Dataset";
+export type PublicationCategory =
+  | "Preprint"
+  | "Journal"
+  | "Conference"
+  | "Dataset";
 export type PublicationFilter = "All" | PublicationCategory;
 
 export type Publication = {
@@ -38,6 +42,8 @@ export type Publication = {
   title: string;
   venue: string;
   status: string;
+  publishedDate?: string;
+  authors?: string[];
   href?: string;
 };
 
@@ -420,6 +426,38 @@ export const researchInterests = [
 
 export const publications: Publication[] = [
   {
+    category: "Preprint",
+    year: "2026",
+    title: "ChannelGuard: Safe Models Do Not Compose into Safe Multi-Agent Systems",
+    venue: "arXiv:2607.19430",
+    status: "Preprint",
+    publishedDate: "20 Jul 2026",
+    authors: [
+      "Elias Hossain",
+      "Md Mehedi Hasan Nipu",
+      "Fatema Tuj Johora Faria",
+      "Tasfia Nuzhat Ornee",
+      "Maleeha Sheikh",
+    ],
+    href: "https://arxiv.org/abs/2607.19430",
+  },
+  {
+    category: "Preprint",
+    year: "2026",
+    title: "NEXUS: Structured Runtime Safety for Tool-Using LLM Agents",
+    venue: "arXiv:2607.19356v1",
+    status: "Preprint",
+    publishedDate: "25 May 2026",
+    authors: [
+      "Elias Hossain",
+      "Md Mehedi Hasan Nipu",
+      "Tasfia Nuzhat Ornee",
+      "Rajib Rana",
+      "Niloofar Yousefi",
+    ],
+    href: "https://arxiv.org/abs/2607.19356v1",
+  },
+  {
     category: "Journal",
     year: "2026",
     title:
@@ -500,12 +538,6 @@ export const activities = [
     label: "Field note",
     text: "Published Top-K Starvation: A Retrieval-First Fix, a practical account of restoring RAG quality by fixing recall before changing the model.",
     href: "https://www.linkedin.com/pulse/top-k-starvation-retrieval-first-fix-what-i-learned-debugging-nipu-w4g9c/",
-  },
-  {
-    date: "July 7, 2026",
-    label: "Publication",
-    text: "Published a comprehensive review of safe and scalable collaboration in multi-agent LLM systems in IEEE TSMC: Systems.",
-    href: "https://ieeexplore.ieee.org/abstract/document/11598769",
   },
   {
     date: "May 2026",

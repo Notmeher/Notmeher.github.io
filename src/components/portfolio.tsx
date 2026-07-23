@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import {
   AnimatePresence,
   motion,
@@ -25,9 +26,7 @@ import {
   capabilities,
   experience,
   publications,
-  researchInterests,
   technicalSkills,
-  type PublicationFilter,
 } from "@/data/portfolio";
 import { SignalField } from "./signal-field";
 import { AwardsCarousel } from "./awards-carousel";
@@ -38,7 +37,7 @@ const navItems = [
   { label: "Work", href: "#work" },
   { label: "Skills", href: "#skills" },
   { label: "Awards", href: "#awards" },
-  { label: "Research", href: "#research" },
+  { label: "Research", href: "/research" },
   { label: "CV", href: "/cv" },
   { label: "Contact", href: "#contact" },
 ];
@@ -76,55 +75,32 @@ const navbarLinks = [
   },
 ];
 
-const publicationFilters: PublicationFilter[] = [
-  "All",
-  "Journal",
-  "Conference",
-  "Dataset",
-];
+const featuredPublications = publications.slice(0, 3);
 
-const heroContainerVariants = {
+const heroMastheadVariants = {
   hidden: {},
   visible: {
-    transition: { delayChildren: 0.08, staggerChildren: 0.12 },
+    transition: { delayChildren: 0.05, staggerChildren: 0.11 },
   },
 };
 
-const heroEyebrowVariants = {
-  hidden: { opacity: 0, x: -22 },
+const heroWordVariants = {
+  hidden: { y: "108%", opacity: 0, rotate: 1.2 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const heroLineVariants = {
-  hidden: { y: "112%", rotate: 1.5 },
-  visible: {
     y: "0%",
     rotate: 0,
-    transition: { duration: 0.76, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.82, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
-const heroLeadVariants = {
-  hidden: { opacity: 0, y: 18, filter: "blur(9px)" },
+const heroPanelVariants = {
+  hidden: { opacity: 0, y: 28, filter: "blur(8px)" },
   visible: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
-const heroActionsVariants = {
-  hidden: { opacity: 0, scale: 0.92, y: 14 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { type: "spring" as const, stiffness: 230, damping: 22 },
+    transition: { duration: 0.68, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -255,8 +231,6 @@ function Loader() {
 export function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [publicationFilter, setPublicationFilter] =
-    useState<PublicationFilter>("All");
   const shouldReduceMotion = useReducedMotion();
   const timelineRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress: pageScrollProgress } = useScroll();
@@ -284,11 +258,6 @@ export function Portfolio() {
   }, [shouldReduceMotion]);
 
   const closeMenu = () => setMenuOpen(false);
-  const filteredPublications = publications.filter(
-    (publication) =>
-      publicationFilter === "All" ||
-      publication.category === publicationFilter,
-  );
 
   return (
     <div className={styles.site}>
@@ -365,155 +334,141 @@ export function Portfolio() {
       <main>
         <section id="top" className={styles.hero}>
           <SignalField />
-
-          <motion.div
-            className={styles.heroContent}
-            variants={heroContainerVariants}
-            initial={shouldReduceMotion ? false : "hidden"}
-            animate={isLoading ? "hidden" : "visible"}
-          >
+          <div className={styles.heroShell}>
             <motion.div
-              className={styles.eyebrow}
-              variants={heroEyebrowVariants}
+              className={styles.heroMeta}
+              initial={shouldReduceMotion ? false : { opacity: 0 }}
+              animate={isLoading ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: shouldReduceMotion ? 0.01 : 0.45 }}
             >
-              <span>APPLICATION DEVELOPER</span>
-              <span>DHAKA, BD · 23.8103° N</span>
+              <span>PORTFOLIO / 2026</span>
+              <span>AI APPLICATION DEVELOPER · RESEARCHER</span>
+              <span>DHAKA, BANGLADESH · 23.8103° N</span>
             </motion.div>
-            <h1>
-              <span className={styles.heroNameLine}>
-                <motion.span variants={heroLineVariants}>
-                  Mehedi Hasan
-                </motion.span>
+
+            <motion.h1
+              className={styles.heroMasthead}
+              variants={heroMastheadVariants}
+              initial={shouldReduceMotion ? false : "hidden"}
+              animate={isLoading ? "hidden" : "visible"}
+              aria-label="Mehedi Hasan Nipu"
+            >
+              <span className={styles.heroMastheadLine} aria-hidden="true">
+                <motion.span variants={heroWordVariants}>MEHEDI</motion.span>
               </span>
               <span
-                className={`${styles.heroNameLine} ${styles.heroNameAccent}`}
+                className={`${styles.heroMastheadLine} ${styles.heroMastheadSecond}`}
+                aria-hidden="true"
               >
-                <motion.span variants={heroLineVariants}>Nipu.</motion.span>
+                <motion.span variants={heroWordVariants}>HASAN</motion.span>
+                <motion.em variants={heroWordVariants}>NIPU</motion.em>
               </span>
-            </h1>
-            <motion.p
-              className={styles.heroLead}
-              variants={heroLeadVariants}
-            >
-              I build production AI systems where agents, people, and reliable
-              software meet.
-            </motion.p>
-            <motion.div
-              className={styles.heroActions}
-              variants={heroActionsVariants}
-            >
-              <a className={styles.primaryButton} href="#work">
-                Explore selected work <ArrowDownRight size={17} />
-              </a>
-              <a
-                className={styles.iconButton}
-                href="https://github.com/Notmeher"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub profile"
-              >
-                <span aria-hidden="true">GH</span>
-              </a>
-              <a
-                className={styles.iconButton}
-                href="https://www.linkedin.com/in/notmeher4459/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn profile"
-              >
-                <span aria-hidden="true">in</span>
-              </a>
-            </motion.div>
-          </motion.div>
+            </motion.h1>
 
-          <motion.div
-            className={styles.heroVisual}
-            initial={
-              shouldReduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    scale: 0.82,
-                    rotate: 2.5,
-                    clipPath: "inset(48% 48% 48% 48%)",
-                  }
-            }
-            animate={
-              isLoading
-                ? { opacity: 0 }
-                : {
-                    opacity: 1,
-                    scale: 1,
-                    rotate: 0,
-                    clipPath: "inset(0% 0% 0% 0%)",
-                  }
-            }
-            transition={{
-              duration: shouldReduceMotion ? 0.01 : 0.9,
-              delay: shouldReduceMotion ? 0 : 0.28,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-          >
-            <div className={styles.heroPortraitFrame}>
-              <motion.div
-                className={styles.heroPortraitLayer}
+            <div className={styles.heroLower}>
+              <motion.figure
+                className={styles.heroIdentity}
                 initial={
                   shouldReduceMotion
                     ? false
-                    : { opacity: 0, y: 54, scale: 1.08 }
+                    : { opacity: 0, clipPath: "inset(100% 0% 0% 0%)" }
                 }
                 animate={
                   isLoading
                     ? { opacity: 0 }
-                    : { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 1, clipPath: "inset(0% 0% 0% 0%)" }
                 }
                 transition={{
                   duration: shouldReduceMotion ? 0.01 : 0.78,
-                  delay: shouldReduceMotion ? 0 : 0.66,
+                  delay: shouldReduceMotion ? 0 : 0.34,
                   ease: [0.16, 1, 0.3, 1],
                 }}
+                whileHover={
+                  shouldReduceMotion ? undefined : { y: -4, rotate: -0.45 }
+                }
               >
-                <Image
-                  className={styles.heroPortrait}
-                  src="/images/portrait-transparent.png"
-                  alt="Portrait of Mehedi Hasan Nipu"
-                  fill
-                  sizes="(max-width: 560px) 82vw, (max-width: 820px) 340px, 450px"
-                  priority
-                />
+                <div className={styles.heroIdentityImage}>
+                  <Image
+                    src="/images/avatar.png"
+                    alt="Portrait of Mehedi Hasan Nipu"
+                    fill
+                    sizes="(max-width: 560px) 76vw, 300px"
+                    priority
+                  />
+                  <span aria-hidden="true">ID / 01</span>
+                </div>
+                <figcaption>
+                  <span>MEHEDI HASAN NIPU</span>
+                  <span>Building from Dhaka · Working globally</span>
+                </figcaption>
+              </motion.figure>
+
+              <motion.div
+                className={styles.heroStatement}
+                variants={heroPanelVariants}
+                initial={shouldReduceMotion ? false : "hidden"}
+                animate={isLoading ? "hidden" : "visible"}
+              >
+                <p className={styles.heroStatementLabel}>WHAT I BUILD</p>
+                <h2>Reliable AI systems for work that matters.</h2>
+                <p>
+                  I turn agentic workflows, language models, and applied
+                  machine learning into clear products people can depend on.
+                </p>
+                <div className={styles.heroActions}>
+                  <a className={styles.primaryButton} href="#work">
+                    Selected work <ArrowDownRight size={17} />
+                  </a>
+                  <a className={styles.heroTextLink} href="/cv">
+                    Read my CV <ArrowRight size={15} />
+                  </a>
+                </div>
               </motion.div>
 
-              <motion.span
-                className={styles.portraitScan}
-                initial={shouldReduceMotion ? false : { top: "8%", opacity: 0 }}
-                animate={
-                  isLoading || shouldReduceMotion
-                    ? { opacity: 0 }
-                    : { top: ["8%", "92%"], opacity: [0, 0.55, 0] }
-                }
-                transition={{
-                  duration: 2.1,
-                  delay: 1.05,
-                  ease: "easeInOut",
-                  repeat: Infinity,
-                  repeatDelay: 4.2,
-                }}
-                aria-hidden="true"
-              />
-
-              <div className={styles.portraitCorners} aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
+              <motion.aside
+                className={styles.heroFocus}
+                variants={heroPanelVariants}
+                initial={shouldReduceMotion ? false : "hidden"}
+                animate={isLoading ? "hidden" : "visible"}
+                transition={{ delay: shouldReduceMotion ? 0 : 0.14 }}
+              >
+                <p>CURRENT SIGNAL</p>
+                <ol>
+                  <li>
+                    <span>01</span> Agentic AI
+                  </li>
+                  <li>
+                    <span>02</span> Multi-agent systems
+                  </li>
+                  <li>
+                    <span>03</span> Trustworthy ML
+                  </li>
+                </ol>
+              </motion.aside>
             </div>
-          </motion.div>
 
-          <a className={styles.scrollCue} href="#profile">
-            <span>SCROLL TO READ</span>
-            <ArrowDownRight size={16} />
-          </a>
+            <motion.div
+              className={styles.heroRail}
+              initial={shouldReduceMotion ? false : { opacity: 0, scaleX: 0 }}
+              animate={
+                isLoading
+                  ? { opacity: 0, scaleX: 0 }
+                  : { opacity: 1, scaleX: 1 }
+              }
+              transition={{
+                duration: shouldReduceMotion ? 0.01 : 0.72,
+                delay: shouldReduceMotion ? 0 : 0.52,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <span>APPLICATIONS</span>
+              <span>RESEARCH</span>
+              <span>AI SYSTEMS</span>
+              <a href="#profile">
+                SCROLL TO EXPLORE <ArrowDownRight size={14} />
+              </a>
+            </motion.div>
+          </div>
         </section>
 
         <section id="profile" className={styles.profileSection}>
@@ -553,8 +508,8 @@ export function Portfolio() {
                   <span>Production systems selected below</span>
                 </div>
                 <div>
-                  <strong>08</strong>
-                  <span>Publications and open datasets</span>
+                  <strong>10</strong>
+                  <span>Research outputs in the dedicated archive</span>
                 </div>
                 <div>
                   <strong>03</strong>
@@ -563,14 +518,6 @@ export function Portfolio() {
               </Reveal>
             </div>
 
-            <Reveal className={styles.interestRail}>
-              <span className={styles.railLabel}>RESEARCH SIGNALS</span>
-              <div>
-                {researchInterests.map((interest) => (
-                  <span key={interest}>{interest}</span>
-                ))}
-              </div>
-            </Reveal>
           </div>
         </section>
 
@@ -864,92 +811,85 @@ export function Portfolio() {
           </div>
         </section>
 
-        <section id="research" className={styles.researchSection}>
+        <section className={styles.featuredSection}>
           <div className={styles.sectionInner}>
-            <Reveal className={styles.sectionHeading}>
-              <p className={styles.sectionIndex}>06 / RESEARCH INDEX</p>
-              <h2>Evidence before certainty.</h2>
+            <Reveal
+              className={`${styles.sectionHeading} ${styles.headingOnDark}`}
+            >
+              <p className={styles.sectionIndex}>06 / FEATURED PUBLICATIONS</p>
+              <h2>Selected research.</h2>
               <p className={styles.sectionSummary}>
-                Work across multi-agent safety, clinical AI, computer vision,
-                federated learning, and responsible datasets.
+                Three recent outputs from the complete research archive.
               </p>
             </Reveal>
 
-            <div
-              className={styles.filterBar}
-              role="group"
-              aria-label="Filter publications"
-            >
-              {publicationFilters.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  className={
-                    filter === publicationFilter
-                      ? styles.filterActive
-                      : undefined
+            <div className={styles.featuredGrid}>
+              {featuredPublications.map((publication, index) => (
+                <motion.article
+                  className={styles.featuredCard}
+                  key={publication.title}
+                  initial={
+                    shouldReduceMotion
+                      ? false
+                      : { opacity: 0, y: 26, scale: 0.985 }
                   }
-                  onClick={() => setPublicationFilter(filter)}
-                  aria-pressed={filter === publicationFilter}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.18 }}
+                  transition={{
+                    duration: shouldReduceMotion ? 0.01 : 0.56,
+                    delay: shouldReduceMotion ? 0 : index * 0.08,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  whileHover={shouldReduceMotion ? undefined : { y: -5 }}
                 >
-                  {filter}
-                  <span>
-                    {filter === "All"
-                      ? publications.length
-                      : publications.filter((item) => item.category === filter)
-                          .length}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            <motion.div layout className={styles.publicationList}>
-              <AnimatePresence mode="popLayout" initial={false}>
-                {filteredPublications.map((publication) => (
-                  <motion.article
-                    layout
-                    key={publication.title}
-                    className={styles.publicationRow}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    whileHover={shouldReduceMotion ? undefined : { y: -2 }}
-                    transition={{ duration: 0.28 }}
-                  >
-                    <div className={styles.publicationMeta}>
-                      <span>{publication.category}</span>
-                      <span>{publication.year}</span>
-                    </div>
-                    <div className={styles.publicationMain}>
-                      <h3>{publication.title}</h3>
-                      <p>{publication.venue}</p>
-                    </div>
-                    <span className={styles.publicationStatus}>
-                      {publication.status}
-                    </span>
+                  <header>
+                    <span>{publication.category}</span>
+                    <span>{publication.publishedDate ?? publication.year}</span>
+                  </header>
+                  <h3>{publication.title}</h3>
+                  {publication.authors?.length ? (
+                    <p className={styles.featuredAuthors}>
+                      {publication.authors.map((author, authorIndex) => (
+                        <span key={author}>
+                          {author === "Md Mehedi Hasan Nipu" ? (
+                            <strong>{author}</strong>
+                          ) : (
+                            author
+                          )}
+                          {authorIndex < publication.authors!.length - 1
+                            ? ", "
+                            : ""}
+                        </span>
+                      ))}
+                    </p>
+                  ) : (
+                    <p className={styles.featuredAuthors}>
+                      Mehedi Hasan Nipu and collaborators
+                    </p>
+                  )}
+                  <footer>
+                    <span>{publication.venue}</span>
                     {publication.href ? (
                       <a
                         href={publication.href}
                         target="_blank"
                         rel="noreferrer"
-                        aria-label={`Open publication: ${publication.title}`}
+                        aria-label={`Open ${publication.title}`}
                       >
-                        <ArrowUpRight size={18} />
+                        Paper <ArrowUpRight size={14} />
                       </a>
                     ) : null}
-                  </motion.article>
-                ))}
-              </AnimatePresence>
-            </motion.div>
+                  </footer>
+                </motion.article>
+              ))}
+            </div>
 
-            <a
-              className={styles.scholarLink}
-              href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=PaBcNmIAAAAJ"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View complete Google Scholar profile <ArrowUpRight size={17} />
-            </a>
+            <Reveal className={styles.featuredBrowse}>
+              <Link href="/research">
+                Browse all publications <ArrowRight size={16} />
+              </Link>
+              <span>{String(publications.length).padStart(2, "0")} records</span>
+            </Reveal>
           </div>
         </section>
 

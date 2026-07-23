@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Production AI systems, multi-agent workflows, and applied machine learning research.",
     type: "website",
-    images: ["/images/portrait.jpg"],
+    images: ["/images/avatar.png"],
   },
   icons: {
     icon: "/favicon.ico",

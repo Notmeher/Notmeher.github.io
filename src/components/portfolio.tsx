@@ -80,11 +80,6 @@ const loaderNameWords = [
   { word: "NIPU", offset: 11 },
 ] as const;
 
-const loaderLetterCount = loaderNameWords.reduce(
-  (total, item) => total + item.word.length,
-  0,
-);
-
 const loaderGlyphFragments = [
   { value: "M", code: "01", left: "5%", top: "14%", x: -90, y: -42, z: -180, rx: 58, ry: -34, rz: -14 },
   { value: "{ }", code: "02", left: "22%", top: "8%", x: 38, y: -72, z: 120, rx: -42, ry: 48, rz: 9 },
@@ -167,8 +162,8 @@ function Loader() {
 
   const loaderReady = shouldReduceMotion || isSettled;
   const loaderStatus = loaderReady
-    ? "IDENTITY LOCKED"
-    : "CALIBRATING GLYPH FIELD";
+    ? "WELCOME"
+    : "COMPOSING IDENTITY";
 
   return (
     <motion.div
@@ -376,9 +371,6 @@ function Loader() {
             >
               {loaderStatus}
             </motion.b>
-          </span>
-          <span className={styles.loaderCount}>
-            {loaderLetterCount} GLYPHS / XYZ
           </span>
         </motion.div>
       </div>

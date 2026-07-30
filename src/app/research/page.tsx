@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, FileText } from "lucide-react";
 import { ResearchArchive } from "@/components/research-archive";
 import { publications } from "@/data/portfolio";
+import { withBasePath } from "@/lib/site-path";
 import styles from "./research.module.css";
 
 export const metadata: Metadata = {
@@ -15,9 +15,9 @@ export default function ResearchPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link href="/" className={styles.backLink}>
+        <a href={withBasePath("/")} className={styles.backLink}>
           <ArrowLeft size={16} /> Portfolio
-        </Link>
+        </a>
 
         <div className={styles.headerTitle}>
           <FileText size={15} aria-hidden="true" />
@@ -32,7 +32,7 @@ export default function ResearchPage() {
           >
             Google Scholar <ArrowUpRight size={14} />
           </a>
-          <Link href="/cv">CV</Link>
+          <a href={withBasePath("/cv/")}>CV</a>
         </nav>
       </header>
 

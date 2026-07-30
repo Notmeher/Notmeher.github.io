@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowLeft, Download, ExternalLink, FileText } from "lucide-react";
 import { CvViewer } from "@/components/cv-viewer";
+import { withBasePath } from "@/lib/site-path";
 import styles from "./cv.module.css";
 
-const cvPath = "/files/Mehedi-Hasan-Nipu-CV.pdf";
+const cvPath = withBasePath("/files/Mehedi-Hasan-Nipu-CV.pdf");
 
 export const metadata: Metadata = {
   title: "CV | Mehedi Hasan Nipu",
@@ -16,9 +16,9 @@ export default function CvPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link className={styles.backLink} href="/">
+        <a className={styles.backLink} href={withBasePath("/")}>
           <ArrowLeft size={16} /> Portfolio
-        </Link>
+        </a>
 
         <div className={styles.headerTitle}>
           <FileText size={16} aria-hidden="true" />

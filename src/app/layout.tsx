@@ -9,8 +9,11 @@ import "@fontsource/ibm-plex-mono/500.css";
 import { PointerTrail } from "@/components/pointer-trail";
 import "./globals.css";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lifeasmeher.vercel.app";
+const metadataBase = new URL(siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`);
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://notmeher.github.io"),
+  metadataBase,
   title: "Mehedi Hasan Nipu | AI Engineer",
   description:
     "Portfolio of Mehedi Hasan Nipu, an AI engineer and researcher building production-grade agentic systems, LLM applications, and trustworthy machine learning tools.",
@@ -27,10 +30,7 @@ export const metadata: Metadata = {
     description:
       "Production AI systems, multi-agent workflows, and applied machine learning research.",
     type: "website",
-    images: ["/images/avatar.png"],
-  },
-  icons: {
-    icon: "/favicon.ico",
+    images: [new URL("images/avatar.png", metadataBase).toString()],
   },
 };
 

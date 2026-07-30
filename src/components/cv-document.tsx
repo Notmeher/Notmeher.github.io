@@ -3,9 +3,10 @@
 import type { PDFDocumentProxy } from "pdfjs-dist";
 import { useEffect, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
+import { withBasePath } from "@/lib/site-path";
 import styles from "./cv-document.module.css";
 
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+pdfjs.GlobalWorkerOptions.workerSrc = withBasePath("/pdf.worker.min.mjs");
 
 type CvDocumentProps = {
   file: string;

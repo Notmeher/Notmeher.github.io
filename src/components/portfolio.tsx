@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import {
   AnimatePresence,
   motion,
@@ -28,6 +27,7 @@ import {
   publications,
   technicalSkills,
 } from "@/data/portfolio";
+import { withBasePath } from "@/lib/site-path";
 import { AwardsCarousel } from "./awards-carousel";
 import styles from "./portfolio.module.css";
 
@@ -36,8 +36,8 @@ const navItems = [
   { label: "Work", href: "#work" },
   { label: "Skills", href: "#skills" },
   { label: "Awards", href: "#awards" },
-  { label: "Research", href: "/research" },
-  { label: "CV", href: "/cv" },
+  { label: "Research", href: "/research/" },
+  { label: "CV", href: "/cv/" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -443,7 +443,7 @@ export function Portfolio() {
 
         <nav className={styles.desktopNav} aria-label="Primary navigation">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a key={item.href} href={withBasePath(item.href)}>
               {item.label}
             </a>
           ))}
@@ -475,7 +475,11 @@ export function Portfolio() {
             aria-label="Mobile navigation"
           >
             {navItems.map((item, index) => (
-              <a key={item.href} href={item.href} onClick={closeMenu}>
+              <a
+                key={item.href}
+                href={withBasePath(item.href)}
+                onClick={closeMenu}
+              >
                 <span>0{index + 1}</span>
                 {item.label}
               </a>
@@ -528,12 +532,18 @@ export function Portfolio() {
                 <a className={styles.primaryButton} href="#work">
                   Selected work <ArrowDownRight size={17} />
                 </a>
-                <Link className={styles.heroTextLink} href="/research">
+                <a
+                  className={styles.heroTextLink}
+                  href={withBasePath("/research/")}
+                >
                   Research <ArrowRight size={15} />
-                </Link>
-                <Link className={styles.heroTextLink} href="/cv">
+                </a>
+                <a
+                  className={styles.heroTextLink}
+                  href={withBasePath("/cv/")}
+                >
                   CV <ArrowRight size={15} />
-                </Link>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -557,7 +567,7 @@ export function Portfolio() {
             >
               <div className={styles.heroPortraitImage}>
                 <Image
-                  src="/images/avatar.png"
+                  src={withBasePath("/images/avatar.png")}
                   alt="Portrait of Mehedi Hasan Nipu"
                   fill
                   sizes="(max-width: 820px) 72vw, 400px"
@@ -694,7 +704,7 @@ export function Portfolio() {
                       }`}
                     >
                       <Image
-                        src={item.logo}
+                        src={withBasePath(item.logo)}
                         alt={item.logoAlt}
                         fill
                         sizes="110px"
@@ -852,7 +862,7 @@ export function Portfolio() {
                 <figure className={styles.educationFigure}>
                   <div className={styles.educationImage}>
                     <Image
-                      src="/images/graduation.jpg"
+                      src={withBasePath("/images/graduation.jpg")}
                       alt="Mehedi Hasan Nipu at his North South University graduation"
                       fill
                       sizes="(max-width: 820px) 100vw, 420px"
@@ -995,9 +1005,9 @@ export function Portfolio() {
             </div>
 
             <Reveal className={styles.featuredBrowse}>
-              <Link href="/research">
+              <a href={withBasePath("/research/")}>
                 Browse all publications <ArrowRight size={16} />
-              </Link>
+              </a>
               <span>{String(publications.length).padStart(2, "0")} records</span>
             </Reveal>
           </div>

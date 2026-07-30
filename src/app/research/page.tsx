@@ -32,7 +32,7 @@ export default function ResearchPage() {
           >
             Google Scholar <ArrowUpRight size={14} />
           </a>
-          <a href={withBasePath("/cv/")}>CV</a>
+          <a href={withBasePath("/cv")}>CV</a>
         </nav>
       </header>
 

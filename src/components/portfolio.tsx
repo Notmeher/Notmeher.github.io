@@ -36,8 +36,8 @@ const navItems = [
   { label: "Work", href: "#work" },
   { label: "Skills", href: "#skills" },
   { label: "Awards", href: "#awards" },
-  { label: "Research", href: "/research/" },
-  { label: "CV", href: "/cv/" },
+  { label: "Research", href: "/research" },
+  { label: "CV", href: "/cv" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -534,13 +534,13 @@ export function Portfolio() {
                 </a>
                 <a
                   className={styles.heroTextLink}
-                  href={withBasePath("/research/")}
+                  href={withBasePath("/research")}
                 >
                   Research <ArrowRight size={15} />
                 </a>
                 <a
                   className={styles.heroTextLink}
-                  href={withBasePath("/cv/")}
+                  href={withBasePath("/cv")}
                 >
                   CV <ArrowRight size={15} />
                 </a>
@@ -1005,7 +1005,7 @@ export function Portfolio() {
             </div>
 
             <Reveal className={styles.featuredBrowse}>
-              <a href={withBasePath("/research/")}>
+              <a href={withBasePath("/research")}>
                 Browse all publications <ArrowRight size={16} />
               </a>
               <span>{String(publications.length).padStart(2, "0")} records</span>

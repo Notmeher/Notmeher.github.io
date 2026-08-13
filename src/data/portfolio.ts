@@ -428,6 +428,23 @@ export const publications: Publication[] = [
   {
     category: "Preprint",
     year: "2026",
+    title:
+      "Robust and Personalized Federated Learning for Aircraft-Engine Prognostics under Benign and Adversarial Client Heterogeneity",
+    venue: "arXiv:2608.04045",
+    status: "Preprint",
+    publishedDate: "4 Aug 2026",
+    authors: [
+      "Chinmoy Mitra",
+      "Md Mehedi Hasan Nipu",
+      "Mohammad Sakib Mahmood",
+      "Md Rakibul Islam",
+      "MF Mridha",
+    ],
+    href: "https://arxiv.org/abs/2608.04045",
+  },
+  {
+    category: "Preprint",
+    year: "2026",
     title: "ChannelGuard: Safe Models Do Not Compose into Safe Multi-Agent Systems",
     venue: "arXiv:2607.19430",
     status: "Preprint",

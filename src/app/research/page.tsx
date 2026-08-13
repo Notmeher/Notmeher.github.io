@@ -50,7 +50,7 @@ export default function ResearchPage() {
                 models, clinical AI, computer vision, federated learning, and
                 responsible datasets.
               </p>
-              <p className={styles.updated}>LAST UPDATED / JUL 2026</p>
+              <p className={styles.updated}>LAST UPDATED / AUG 2026</p>
             </div>
           </div>
         </section>

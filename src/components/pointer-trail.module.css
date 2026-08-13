@@ -93,3 +93,14 @@
     cursor: none !important;
   }
 }
+
+@media (max-width: 820px) {
+  .cursorLayer {
+    display: none !important;
+  }
+
+  :global(html.portfolio-custom-cursor),
+  :global(html.portfolio-custom-cursor *) {
+    cursor: auto !important;
+  }
+}

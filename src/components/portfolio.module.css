@@ -1499,6 +1499,12 @@
     margin-top: 0;
   }
 
+  .roleContent {
+    position: relative;
+    z-index: 1;
+    margin-left: 22px;
+  }
+
   .roleHeader h3 {
     font-size: 37px;
   }

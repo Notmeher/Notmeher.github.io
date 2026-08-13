@@ -61,6 +61,47 @@ export const experience: Experience[] = [
     projects: [
       {
         number: "01",
+        title: "AuditPilot: Multi-Agent AI Platform for Regulatory Compliance Auditing",
+        achievements: [
+          {
+            lead: "Built a Control Set builder",
+            detail:
+              "that converts any regulatory standard, including GAMP 5, ISO, FDA, and internal SOPs, into a machine-readable clause index using quality-scored PDF/DOCX extraction and parallel Claude Agent SDK workers.",
+          },
+          {
+            lead: "Engineered a clause-by-clause compliance checker",
+            detail:
+              "where a scoping agent bounds document responsibility and concurrency-capped agents return evidence-cited verdicts with Critical, Major, and Minor severity grading.",
+          },
+          {
+            lead: "Designed the pipeline for resilience",
+            detail:
+              "with per-slice checkpointing to Azure Blob Storage for resumable retries, citation verification against source files, and deterministic Python-based compliance scoring.",
+          },
+          {
+            lead: "Delivered a grounded chat interface",
+            detail:
+              "for instant, cited Q&A over each Control Set, plus a unified activity and cost dashboard tracking agent spend and status in Azure SQL.",
+          },
+        ],
+        technologies: [
+          "Python 3.12",
+          "FastAPI",
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Claude Agent SDK",
+          "Anthropic Claude Opus/Sonnet/Haiku",
+          "pdfplumber",
+          "python-docx",
+          "Azure SQL",
+          "Azure Blob Storage",
+          "Docker",
+          "Azure App Service",
+        ],
+      },
+      {
+        number: "02",
         title:
           "RFPGen: AI-Powered Government RFP Aggregation & Proposal Generation Platform",
         achievements: [
@@ -103,7 +144,7 @@ export const experience: Experience[] = [
         ],
       },
       {
-        number: "02",
+        number: "03",
         title: "BM Product Accelerator: AI-Powered Full-Stack Application Generator",
         achievements: [
           {
@@ -157,7 +198,7 @@ export const experience: Experience[] = [
       "Shipped Salesforce automation, document-intelligence workflows, computer-vision fraud detection, and geospatial compliance products.",
     projects: [
       {
-        number: "03",
+        number: "04",
         title: "SFAGent: AI-Powered Salesforce Agentic Compliance System",
         achievements: [
           {
@@ -202,7 +243,7 @@ export const experience: Experience[] = [
         ],
       },
       {
-        number: "04",
+        number: "05",
         title: "AI-Powered Automated Check Fraud Detection",
         achievements: [
           {
@@ -245,7 +286,7 @@ export const experience: Experience[] = [
         ],
       },
       {
-        number: "05",
+        number: "06",
         title: "GeoViz: Modern Flight-Based Compliance System",
         achievements: [
           {
@@ -301,7 +342,7 @@ export const experience: Experience[] = [
       "Developed RAG agents, competitive-intelligence workflows, and document-processing applications while evaluating retrieval quality.",
     projects: [
       {
-        number: "06",
+        number: "07",
         title: "GenBot: Advanced RAG-Based Web Chatbot with CrewAI",
         achievements: [
           {
@@ -341,7 +382,7 @@ export const experience: Experience[] = [
         ],
       },
       {
-        number: "07",
+        number: "08",
         title: "Company Competitor Service Analysis and SWOT AI Agent",
         achievements: [
           {
@@ -377,7 +418,7 @@ export const experience: Experience[] = [
         ],
       },
       {
-        number: "08",
+        number: "09",
         title: "LLM Powered Legal Contract Generator",
         achievements: [
           {

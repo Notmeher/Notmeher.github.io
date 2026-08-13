@@ -628,7 +628,7 @@ export function Portfolio() {
                   <span>Production systems selected below</span>
                 </div>
                 <div>
-                  <strong>10</strong>
+                  <strong>{publications.length}</strong>
                   <span>Research outputs in the dedicated archive</span>
                 </div>
                 <div>
@@ -1095,7 +1095,7 @@ export function Portfolio() {
 
             <footer className={styles.contactFooter}>
               <div className={styles.closingBottom}>
-                <p>© 2026 Mehedi Hasan Nipu</p>
+                <p>© Mehedi Hasan Nipu</p>
                 <div>
                   <a
                     href="https://github.com/Notmeher"

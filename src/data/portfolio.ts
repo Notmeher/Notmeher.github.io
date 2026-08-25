@@ -470,6 +470,24 @@ export const publications: Publication[] = [
     category: "Preprint",
     year: "2026",
     title:
+      "Agentic Security: A Systematization of Tools, Failure Modes, and Design Laws for LLM-Driven Penetration Testing",
+    venue: "arXiv:2608.21423",
+    status: "Preprint",
+    publishedDate: "16 Aug 2026",
+    authors: [
+      "Israt Moyeen Noumi",
+      "Tarannum Ahmed Nowshin",
+      "Md. Mehedi Hasan Nipu",
+      "Mohammad Sakib Mahmood",
+      "Md. Jakir Hossain",
+      "M. F. Mridha",
+    ],
+    href: "https://arxiv.org/abs/2608.21423",
+  },
+  {
+    category: "Preprint",
+    year: "2026",
+    title:
       "Robust and Personalized Federated Learning for Aircraft-Engine Prognostics under Benign and Adversarial Client Heterogeneity",
     venue: "arXiv:2608.04045",
     status: "Preprint",
@@ -745,6 +763,16 @@ export const awardsAndCertifications = [
     description:
       "Completed Dexian's annual cyber-defense and security-awareness training program for 2026.",
     href: "https://drive.google.com/file/d/1aGo-_Z5Pr9KRtPmosFEE2416HVQZGd_p/view?usp=sharing",
+    linkLabel: "View certificate",
+  },
+  {
+    type: "Certification",
+    title: "Certified LLM Security Expert (CLLMSE)",
+    issuer: "Red Team Leaders",
+    issued: "Aug 2026",
+    description:
+      "Demonstrated hands-on mastery across all nine domains of LLM and AI-agent security, including prompt injection, jailbreak techniques, the OWASP Top 10 for LLM Applications, NIST AI RMF and EU AI Act governance, blue-team defense, identity and access management, secure agent architecture, agent lifecycle operations, and AI/LLM supply-chain risk.",
+    href: "https://courses.redteamleaders.com/exam-completion/d5634b2889fbe42a",
     linkLabel: "View certificate",
   },
 ];

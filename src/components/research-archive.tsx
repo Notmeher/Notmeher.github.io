@@ -111,6 +111,13 @@ export function ResearchArchive() {
                   </p>
                 ) : null}
                 <p className={styles.venue}>{publication.venue}</p>
+                {publication.impactFactor || publication.coreRank ? (
+                  <p className={styles.ranking}>
+                    {[publication.impactFactor, publication.coreRank]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                ) : null}
               </div>
 
               {publication.href ? (

@@ -45,6 +45,8 @@ export type Publication = {
   publishedDate?: string;
   authors?: string[];
   href?: string;
+  impactFactor?: string;
+  coreRank?: string;
 };
 
 export const experience: Experience[] = [
@@ -525,6 +527,7 @@ export const publications: Publication[] = [
       "The 5th Asia-Pacific Chapter of the Association for Computational Linguistics & the 15th International Joint Conference on Natural Language Processing (AACL-IJCNLP 2026)",
     status: "Accepted",
     publishedDate: "25 May 2026",
+    coreRank: "ICORE/CORE Rank: B",
     authors: [
       "Elias Hossain",
       "Md Mehedi Hasan Nipu",
@@ -542,6 +545,7 @@ export const publications: Publication[] = [
     venue: "IEEE Transactions on Systems, Man, and Cybernetics: Systems",
     status: "Published",
     href: "https://ieeexplore.ieee.org/abstract/document/11598769",
+    impactFactor: "Q1, IF: 8.7",
   },
   {
     category: "Journal",

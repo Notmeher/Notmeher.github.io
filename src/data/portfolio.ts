@@ -518,11 +518,12 @@ export const publications: Publication[] = [
     href: "https://arxiv.org/abs/2607.19430",
   },
   {
-    category: "Preprint",
+    category: "Conference",
     year: "2026",
     title: "NEXUS: Structured Runtime Safety for Tool-Using LLM Agents",
-    venue: "arXiv:2607.19356v1",
-    status: "Preprint",
+    venue:
+      "The 5th Asia-Pacific Chapter of the Association for Computational Linguistics & the 15th International Joint Conference on Natural Language Processing (AACL-IJCNLP 2026)",
+    status: "Accepted",
     publishedDate: "25 May 2026",
     authors: [
       "Elias Hossain",

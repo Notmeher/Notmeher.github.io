@@ -13,6 +13,7 @@ import "./globals.css";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lifeasmeher.vercel.app";
 const metadataBase = new URL(siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`);
 const gaId = "G-0EZV651C5F";
+const clarityId = "ysxex64dqo";
 
 export const metadata: Metadata = {
   metadataBase,
@@ -53,6 +54,13 @@ export default function RootLayout({
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${gaId}');`}
+        </Script>
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){
+c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "${clarityId}");`}
         </Script>
         <PointerTrail />
         {children}

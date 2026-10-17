@@ -575,13 +575,13 @@
 
 .heroPortraitImage {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 1400 / 1567;
   overflow: hidden;
 }
 
 .heroPortraitImage img {
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit: cover;
+  object-position: center;
   filter: saturate(0.84) contrast(1.02);
 }
 
